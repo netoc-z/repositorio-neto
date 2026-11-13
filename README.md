@@ -1,29 +1,70 @@
 # Sistema de Gestão da Loja Kelp
 
-Projeto Integrado de Análise e Desenvolvimento de Sistemas. A proposta é apoiar o cadastro de produtos, o registro de pedidos e o controle do estoque da loja Kelp.
+Projeto Integrado do curso de Análise e Desenvolvimento de Sistemas. O sistema apoia o cadastro de produtos, o controle de estoque, o registro de vendas e a consulta ao histórico de pedidos da loja Kelp.
 
-## Primeira versão
+## Integrantes
 
-Este protótipo de terminal demonstra o cálculo do total de um pedido. O usuário informa produtos, quantidades e preços unitários; o programa valida os dados, calcula os subtotais e mostra o valor total.
+- Kelly Santos Vieira
+- Gabriel Vinicius Pereira
+- Arlindo Ferreira
+- Pedro Henrique
 
-## Disciplinas integradas
+## Problema
 
-| Disciplina | Aplicação no projeto | Evidência inicial |
-|---|---|---|
-| Linguagem de Programação | Tipos numéricos, entrada e saída de dados, funções | `main.py` |
-| Algoritmos e Programação Estruturada | Sequência, validação, decisão e repetição | Funções e laço do pedido em `main.py` |
-| Matemática Computacional | Subtotal = quantidade × preço; total = soma dos subtotais | Função `calcular_total` e exemplo abaixo |
+Controles manuais ou planilhas dispersas podem dificultar a consulta de produtos e pedidos, favorecer erros e atrasar o atendimento. O projeto propõe organizar essas operações em um programa simples.
 
-## Exemplo de cálculo
+## Funcionalidades atuais
 
-Um item com quantidade 2 e preço unitário R$ 35,00 tem subtotal de R$ 70,00. Outro item com quantidade 1 e preço unitário R$ 20,00 resulta em total do pedido de R$ 90,00.
+- Cadastrar produtos com nome, categoria, tamanho, preço e estoque inicial.
+- Listar produtos ativos.
+- Repor estoque.
+- Registrar uma venda com um ou mais itens.
+- Calcular o total e reduzir o estoque após a venda.
+- Consultar o histórico de pedidos e seus itens.
+- Salvar produtos, vendas e estoque em um banco SQLite local.
+
+O nome do cliente fica associado ao pedido. Esta versão ainda não tem cadastro separado de clientes, login de funcionários, status dos pedidos ou interface gráfica.
+
+## Tecnologias
+
+- Python 3.10 ou superior
+- SQLite, pela biblioteca padrão do Python
 
 ## Como executar
 
-Requer Python 3. Abra um terminal nesta pasta e execute:
+Abra um terminal nesta pasta e execute:
 
 ```bash
-python main.py
+python kelp.py
 ```
 
-Este protótipo ainda não salva os dados depois que o programa é encerrado. Persistência, cadastro completo e integração com banco de dados ficam para as próximas etapas.
+No Windows, também pode funcionar:
+
+```bash
+py kelp.py
+```
+
+O programa cria `kelp.db` automaticamente na primeira execução. Esse arquivo guarda os dados locais e não é necessário para executar o sistema; o código recria a estrutura do banco.
+
+## Como usar
+
+1. Escolha `1` para cadastrar um produto.
+2. Escolha `2` para listar os produtos e consultar seus IDs.
+3. Escolha `3` para repor estoque.
+4. Escolha `4` para registrar uma venda. Informe os IDs e quantidades dos produtos; digite `0` quando terminar de incluir itens.
+5. Escolha `5` para consultar o histórico de pedidos.
+6. Escolha `0` para sair.
+
+## Integração das disciplinas
+
+| Disciplina | Aplicação no sistema |
+|---|---|
+| Linguagem de Programação | Python, funções, entrada e saída, módulos e SQLite |
+| Algoritmos e Programação Estruturada | Menu com seleção, repetição, validação e funções separadas |
+| Matemática Computacional | Preços em centavos, subtotais, total da venda e atualização do estoque |
+
+## Continuidade do projeto
+
+A linha de base anterior incluiu o levantamento do problema e dos requisitos, a modelagem do banco de dados e os protótipos das telas. O avanço de 2026/2 é a implementação inicial em Python com persistência local, controle de estoque, vendas e histórico.
+
+`kelp.py` é a versão principal atual. `main.py` permanece no repositório como protótipo simples anterior, usado para demonstrar o cálculo de um pedido.
